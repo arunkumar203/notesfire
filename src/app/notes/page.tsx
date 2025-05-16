@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { FiLogOut, FiPlus, FiX, FiFileText, FiTrash2, FiEdit } from 'react-icons/fi';
-import { getDatabase, ref, onValue, push, update, remove, DataSnapshot } from 'firebase/database';
+import { getDatabase, ref, onValue, push, update, remove } from 'firebase/database';
 import { toast } from 'react-hot-toast';
 
 interface Note {

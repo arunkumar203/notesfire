@@ -7,7 +7,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaArrowRight, FaStickyNote } from 'react-icons/fa';
 
 export default function Home() {
-  const { user, loginWithGoogle, loading } = useAuth();
+  const { loginWithGoogle, loading } = useAuth();
   const router = useRouter();
 
   const handleGoogleSignIn = async () => {

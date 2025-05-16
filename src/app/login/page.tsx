@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { FcGoogle } from 'react-icons/fc';
 import { FaSpinner } from 'react-icons/fa';
@@ -15,7 +14,6 @@ export default function LoginPage() {
   const [loading, setLoading] = useState<boolean>(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState<boolean>(false);
   const { login, loginWithGoogle } = useAuth();
-  const router = useRouter();
 
   useRedirectAfterLogin();
 

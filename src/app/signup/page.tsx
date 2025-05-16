@@ -46,25 +46,29 @@ export default function SignUpPage() {
     try {
       await signup(email, password);
       router.push('/notes');
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Signup error:', err);
       
       // Handle specific error cases
-      switch (err.code) {
-        case 'auth/email-already-in-use':
-          setError('An account already exists with this email. Try logging in instead.');
-          break;
-        case 'auth/invalid-email':
-          setError('Please enter a valid email address');
-          break;
-        case 'auth/weak-password':
-          setError('Please choose a stronger password');
-          break;
-        case 'auth/operation-not-allowed':
-          setError('Email/password accounts are not enabled');
-          break;
-        default:
-          setError('Failed to create an account. Please try again.');
+      if (err instanceof Error) {
+        switch (err.message) {
+          case 'auth/email-already-in-use':
+            setError('An account already exists with this email. Try logging in instead.');
+            break;
+          case 'auth/invalid-email':
+            setError('Please enter a valid email address');
+            break;
+          case 'auth/weak-password':
+            setError('Please choose a stronger password');
+            break;
+          case 'auth/operation-not-allowed':
+            setError('Email/password accounts are not enabled');
+            break;
+          default:
+            setError('Failed to create an account. Please try again.');
+        }
+      } else {
+        setError('Failed to create an account. Please try again.');
       }
     } finally {
       setLoading(false);
