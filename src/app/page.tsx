@@ -92,10 +92,13 @@ export default function Home() {
                 icon: '🔒',
               },
             ].map((feature) => (
-              <div key={feature.name} className="pt-6">
+              <div
+                key={feature.name}
+                className="pt-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
+              >
                 <div className="flow-root bg-white rounded-lg px-6 pb-8 h-full">
                   <div className="-mt-6">
-                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white text-xl mx-auto">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white text-xl mx-auto transform transition-transform duration-300 hover:scale-110">
                       {feature.icon}
                     </div>
                     <h3 className="mt-4 text-lg font-medium text-gray-900 text-center">
