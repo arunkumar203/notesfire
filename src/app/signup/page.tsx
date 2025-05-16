@@ -17,38 +17,38 @@ export default function SignUpPage() {
   const [isGoogleLoading, setIsGoogleLoading] = useState<boolean>(false);
   const { signup, loginWithGoogle } = useAuth();
   const router = useRouter();
-  
+
   // Handle redirect after signup
   useRedirectAfterLogin();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validation
     if (!email || !password || !confirmPassword) {
       setError('Please fill in all fields');
       return;
     }
-    
+
     if (password !== confirmPassword) {
       setError('Passwords do not match');
       return;
     }
-    
+
     if (password.length < 6) {
       setError('Password must be at least 6 characters long');
       return;
     }
-    
+
     setLoading(true);
     setError('');
-    
+
     try {
       await signup(email, password);
       router.push('/notes');
     } catch (err: unknown) {
       console.error('Signup error:', err);
-      
+
       // Handle specific error cases
       if (err instanceof Error) {
         switch (err.message) {
@@ -90,14 +90,23 @@ export default function SignUpPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
+        <div className="flex justify-between items-center mb-4">
+          <Link
+            href="/"
+            className="text-lg font-bold text-blue-600 hover:text-blue-700"
+          >
+            Notes App
+          </Link>
+        </div>
+
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Create a new account
+            Create your account
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Or{' '}
             <Link href="/login" className="font-medium text-blue-600 hover:text-blue-500">
-              sign in to your existing account
+              sign in to an existing account
             </Link>
           </p>
         </div>
@@ -131,7 +140,7 @@ export default function SignUpPage() {
             <span className="px-2 bg-gray-50 text-gray-500">Or continue with email</span>
           </div>
         </div>
-        
+
         {error && (
           <div className="bg-red-50 border-l-4 border-red-400 p-4">
             <div className="flex">
@@ -146,7 +155,7 @@ export default function SignUpPage() {
             </div>
           </div>
         )}
-        
+
         <form className="mt-6 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm space-y-4">
             <div>
@@ -210,7 +219,7 @@ export default function SignUpPage() {
                 'Sign up with Email'
               )}
             </button>
-            
+
             <div className="text-xs text-gray-500 text-center">
               By signing up, you agree to our Terms of Service and Privacy Policy.
             </div>
