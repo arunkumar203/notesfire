@@ -2,14 +2,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   devIndicators: {
-    buildActivity: false, // Disable build activity indicator
-    buildActivityPosition: 'bottom-left',
+    // ⚠️ Removed deprecated `buildActivity`
+    position: 'bottom-left', // ✅ Updated from `buildActivityPosition`
   },
-  poweredByHeader: false, // This will hide the Next.js badge in development
 
-  // ⛔ Disable ESLint checks during production builds
+  poweredByHeader: false,
+
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true, // ✅ This disables ESLint errors in production
   },
 };
 
