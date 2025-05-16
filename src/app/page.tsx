@@ -30,6 +30,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="flex justify-between items-center mb-4">
+          <div></div> {/* Empty div to balance alignment */}
+          <p className="text-sm text-gray-500">App created by R.Arun Kumar</p>
+        </div>
         <div className="text-center">
           <div className="flex justify-center mb-6">
             <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-100">
@@ -42,7 +46,7 @@ export default function Home() {
           <p className="mt-6 max-w-lg mx-auto text-xl text-gray-500">
             Capture, organize, and share your thoughts with our simple and intuitive notes app.
           </p>
-          
+
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={handleGoogleSignIn}
@@ -51,7 +55,7 @@ export default function Home() {
               <FcGoogle className="w-5 h-5 mr-2" />
               Continue with Google
             </button>
-            
+
             <Link
               href="/login"
               className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
@@ -60,7 +64,7 @@ export default function Home() {
               <FaArrowRight className="ml-2 -mr-1 w-4 h-4" />
             </Link>
           </div>
-          
+
           <div className="mt-8 text-sm text-gray-500">
             Already have an account?{' '}
             <Link href="/login" className="font-medium text-blue-600 hover:text-blue-500">
@@ -68,7 +72,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        
+
         <div className="mt-16">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {[
